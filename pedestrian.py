@@ -43,7 +43,7 @@ while(1):
             (xold, yold) = prevPoint
             dist = cv2.sqrt((xnew-xold)*(xnew-xold)+(ynew-yold)*(ynew-yold))
             if dist[0] <= 120:
-                if line1(xnew, ynew) > 0 and line2(xnew, ynew) < 0:
+                if line1(xnew, ynew) >= 0 and line2(xnew, ynew) <= 0:
                     if line1(xold, yold) < 0: # Point entered from line above
                         pointFromAbove.add(point)
                     elif line2(xold, yold) > 0: # Point entered from line below
