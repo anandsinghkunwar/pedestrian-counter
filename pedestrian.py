@@ -17,6 +17,9 @@ crossedBelow = 0
 points = set()
 pointFromAbove = set()
 pointFromBelow = set()
+
+fourcc = cv2.VideoWriter_fourcc(*'XVID')
+out = cv2.VideoWriter('pedestrianOutput.avi',fourcc, 25.0, (1920,1080))
 font = cv2.FONT_HERSHEY_SIMPLEX
 while(1):
     pointInMiddle = set()
@@ -83,6 +86,7 @@ while(1):
     cv2.putText(frame,'People Going Below = '+str(crossedBelow),(1200,100), font, 1,(255,255,255),2,cv2.LINE_AA)
     cv2.imshow('a',oldFgmask)
     cv2.imshow('frame',frame)
+    out.write(frame)
     l = cv2.waitKey(1) & 0xff
     if l == 27:
         break
