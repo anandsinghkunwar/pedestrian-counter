@@ -31,7 +31,7 @@ while(1):
     fgmask = fgbg.apply(fgmask)
     fgmask = cv2.medianBlur(fgmask, 7)
     oldFgmask = fgmask.copy()
-    image, contours, hierarchy = cv2.findContours(fgmask, cv2.RETR_EXTERNAL,1)
+    contours, hierarchy = cv2.findContours(fgmask, cv2.RETR_EXTERNAL,1)
     for contour in contours:
         x,y,w,h = cv2.boundingRect(contour)
         if w>40 and h>90:
@@ -61,14 +61,14 @@ while(1):
                             pointFromAbove.add(point)
 
                 if line1(xnew, ynew) < 0 and prevPoint in pointFromBelow: # Point is above the line
-                    print 'One Crossed Above'
-                    print point
+                    print('One Crossed Above')
+                    print(point)
                     crossedAbove += 1
                     pointFromBelow.remove(prevPoint)
 
                 if line2(xnew, ynew) > 0 and prevPoint in pointFromAbove: # Point is below the line
-                    print 'One Crossed Below'
-                    print point
+                    print('One Crossed Below')
+                    print(point)
                     crossedBelow += 1
                     pointFromAbove.remove(prevPoint)
 
